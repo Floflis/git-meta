@@ -8,7 +8,7 @@ commit_author="$(git config user.name)"" <""$(git config user.email)"">"
 commit_message=$(cat $1)
 current_branch=$(git rev-parse --abbrev-ref HEAD) #from https://dev.to/anibalardid/how-to-check-commit-message-and-branch-name-with-git-hooks-without-any-new-installation-n34
 first_remote_name=$(git remote | head -n 1) # Define the first remote's name
-first_remote_url=$(git remote | head -n 1 | xargs git remote get-url) # Get the first remote's URL
+[[ ! -z "$first_remote_name" ]] && first_remote_url=$(git remote | head -n 1 | xargs git remote get-url) # Get the first remote's URL
 
 # https://github.com/typicode/husky/discussions/1171
 rocketlaunch_dir=`pwd` #from https://unix.stackexchange.com/a/52919/470623
